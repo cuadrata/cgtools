@@ -1,0 +1,65 @@
+cgtools 1.4.0
+=============
+
+cgtools is two small tools from GNOME 1, ported to CGTK as plain
+programs with nothing of GNOME left in them, and one written for CGTK.
+This is its first release, numbered to match CGTK 1.4.0. The first two
+were cghex 1.2.1 and cgcalc 1.4.1.2 before; they are now one package,
+built together.
+
+cghex, a binary editor (from GHex 1.2.1)
+* Hexadecimal and ASCII sides, one window with a page per file, insert
+  and overwrite, grouping by bytes, words or longwords, find, replace
+  and jump to a byte (0x for hex), export to a set of HTML pages, the
+  base converter and the character table.
+* Settings in $XDG_CONFIG_HOME/cghex/cghexrc.
+* A man page, cghex(1).
+* Edit > Goto Byte is now Jump to Byte, as its G clashed with Group
+  Data As; "occurencies" and "GNU Public License" are corrected.
+* An icon drawn for it, three cells of a honeycomb, on its window and
+  in its About dialog.
+
+cgcalc, a calculator (from GCalc of gnome-utils 1.4.1.2)
+* A double precision scientific calculator in degrees, radians or
+  grads, with a programmer's keypad for words of 8 to 64 bits in
+  hexadecimal, decimal, octal or binary, showing every bit.
+* With -analog, a slide rule instead, as the X11R3 xcalc had.
+* A man page, cgcalc(1).
+* An icon drawn for it, a calculator, on its windows and in its About
+  dialog.
+
+cgrun, a box to start programs from (new)
+* A Run box as of old: a line to type in, Run and Close. What is typed
+  is run, as the program of that name if one has a .desktop file and
+  as a command line if not. The line finishes itself from what ran
+  before and from the programs' names, and the earlier lines can be
+  let down from it. A box runs the thing in a terminal: $TERMINAL,
+  imperaterm or xterm.
+* A third button opens a list of the programs and the earlier command
+  lines, which typing then narrows, the most often started first;
+  --list starts with it open.
+* Meant for a key of the window manager or compositor. It goes when
+  it has started something and at Escape, and one that is started
+  while another is there takes its place. Its window is of a fixed
+  size, for tiling compositors to float.
+* A man page, cgrun(1). No .desktop file and no icon.
+
+Icons
+* cghex's and cgcalc's icons are each one SVG in the Altus theme's
+  purple, with PNGs of it from 16 to 256 pixels in the hicolor theme
+  and an XPM in pixmaps. Every window of theirs has the icon, in
+  colour and in the size the window manager wants on X11.
+
+Translations
+* Each tool keeps its own catalogues and text domain, in cghex/po,
+  cgcalc/po and cgrun/po. All are complete: cghex in 29 languages,
+  cgcalc and cgrun in 35.
+  Old mistakes are corrected, Norwegian is nb, and every menu item has
+  one mnemonic, with no two alike in a menu. The strings new in the
+  tools, and all of cgrun's, were machine translated and have not been
+  reviewed by native speakers.
+
+Building
+* One configure and Makefile for all, needing CGTK 1.4, autoconf
+  2.71, automake 1.16 and gettext 0.19.6 or later from git; the git
+  tree holds no generated files.

@@ -1,0 +1,60 @@
+cgtools
+=======
+
+Small tools for CGTK. Two are ported from GNOME 1 as plain CGTK
+programs, with nothing of GNOME left in them, and one is written for
+CGTK.
+
+  cghex   a binary editor, from GHex 1.2.1
+  cgcalc  a scientific and programmer's calculator, and a slide rule,
+          from GCalc of gnome-utils 1.4.1.2
+  cgrun   a box to start programs from
+
+Each has a README of its own in its directory, with its copyright,
+what it does and who wrote it.
+
+Building
+--------
+
+It needs CGTK 1.4, and autoconf 2.71, automake 1.16 and gettext 0.19.6
+or later to build from git. The git tree holds no generated files;
+make them first:
+
+  autoreconf -vif
+  ./configure
+  make
+  make check
+  make install
+
+make check edits a file through cghex's document, with no window, and
+looks at what it then holds; and has cgrun read the .desktop files in
+tests/data, match names against them and start programs.
+
+A release tarball comes with its configure script, and starts at
+./configure.
+
+Translations
+------------
+
+Each program keeps its own catalogues and text domain, in cghex/po,
+cgcalc/po and cgrun/po, and installs them as cghex.mo, cgcalc.mo and
+cgrun.mo. The strings new in the tools, and all of cgrun's, were
+machine translated and have not been reviewed by native speakers.
+
+History
+-------
+
+The notes that GHex and GCalc came with, as they were brought in, are
+in history/, unchanged: GHex 1.1.4's, the version brought in before
+the useful parts of 1.2.1 were taken into it, and those of GCalc from
+gnome-utils 1.4.1.2.
+
+Licence
+-------
+
+The tools are under the GNU General Public License, version 2 or later
+(COPYING), as GHex and gnome-utils were.
+
+The tools' icons were drawn for them, and are under the GPL with the
+rest. Each is one picture, as cghex/icons/cghex.svg, with the sizes of
+it and the XPM that render-icons.sh makes kept beside it.

@@ -1,0 +1,122 @@
+.\" cgrun.1 - cgrun
+.\" Copyright (C) 2026 The CGTK authors
+.TH cgrun 1 "November 2026" "cgtools 1.4.0"
+.\" one space after a full stop, not the sentence space roff adds
+.ss 12 0
+.SH NAME
+cgrun \- a box to start programs from
+.SH SYNOPSIS
+.B cgrun
+.RB [ \-\-list ]
+.SH DESCRIPTION
+.B cgrun
+is a small window with a line to type in, a Run button and a Close
+button, as the Run box of old had. It is meant to be started by a key
+of the window manager or compositor, used once, and gone.
+.PP
+What is typed is run: the program of that name if there is one, and
+otherwise a command line. The programs are those the desktop knows
+of, which have a .desktop file that a menu would show, and the name is
+the one a menu would show, with capitals or without. A command line is
+taken apart into words as a shell takes it, with its quotes and
+backslashes, but no shell runs it: there are no variables, patterns or
+pipes. A tilde at the start of a word is the home directory. A program
+runs in the directory its .desktop file names, and otherwise at home.
+.PP
+The line finishes itself as it is typed, from the lines that ran
+before, the latest first, and failing those from the names of the
+programs, the most often started first. What it adds is selected:
+typing on replaces it, BackSpace takes it away, and Return runs the
+line with it. The lines that ran before can be let down from the
+arrow at the end of the line, or gone through with Up and Down.
+.PP
+The third button, Programs, opens a list beneath: the programs, and
+the command lines that ran before. What is typed then narrows the
+list instead of finishing itself: every word typed must be in a
+program's name, in what kind of thing it says it is, among its
+keywords, or be its command. A name that begins with what is typed
+comes first, then one with a word that begins with it, then one that
+has it anywhere, then the rest; and of two that are met as well, the
+one started more often from here comes first. Return starts what is
+chosen in the list, and what is typed if nothing in the list is met.
+The same button shuts the list again.
+.PP
+If the program cannot be started, the window stays and says why.
+Otherwise it goes. There is one
+.B cgrun
+on a display: one that is started while another is there takes its
+place, so the key always brings it to where the user is.
+.SH OPTIONS
+.TP
+.B \-\-list
+Start with the list of programs open.
+.TP
+.B \-\-help
+Say how it is used, and exit.
+.TP
+.B \-\-version
+Say which version it is, and exit.
+.SH KEYS
+.TP
+.B Return
+Run the line; with the list open, start what is chosen in it, or the
+line if the list is empty.
+.TP
+.B Control+Return
+Run the line as a command line, in a terminal.
+.TP
+.B Shift+Return
+With the list open, run the line as a command line, whatever the list
+has.
+.TP
+.B Up, Down
+Go through the lines that ran before; with the list open, choose in
+it, as Page Up and Page Down do then. A double click on a row starts
+it.
+.TP
+.B Escape
+Go, starting nothing.
+.SH TERMINALS
+A program whose .desktop file asks for a terminal, and anything
+started with the box that says so ticked or with Control+Return, runs
+in the terminal that the environment variable
+.B TERMINAL
+names, which may have arguments of its own; without it, in
+.BR cgterm (1)
+if that is installed, and else in xterm. The terminal is given
+.B \-e
+and then the command. A line that ran in a terminal ticks the box when
+it comes up again.
+.SH WINDOW
+The window cannot be resized, which tiling compositors take as a
+reason to float it. Its class is Cgrun, which is its application id on
+Wayland, for a window rule.
+.PP
+It is an ordinary window and has the keyboard only as long as the
+window manager leaves it there. Where the keyboard follows the
+pointer, a rule can keep it; in Hyprland 0.54:
+.PP
+.nf
+  windowrule = match:class ^(Cgrun)$, stay_focused on
+.fi
+.SH FILES
+.TP
+.I $XDG_DATA_HOME/applications, $XDG_DATA_DIRS/applications
+The .desktop files, the user's own before the system's: a file of the
+user's with the name of one of the system's stands in its place, and
+hides it if it says Hidden. Entries that say NoDisplay, that are for
+other desktops than
+.BR XDG_CURRENT_DESKTOP ,
+or whose TryExec is not installed are left out.
+.TP
+.I $XDG_RUNTIME_DIR/cgrun\-DISPLAY.lock
+Locked by the
+.B cgrun
+there is, for the next one to find it by.
+.TP
+.I $XDG_STATE_HOME/cgrun/history
+How often each program was started from here, and the last fifty
+command lines. Without the variable it is under ~/.local/state.
+Removing the file forgets it all.
+.SH SEE ALSO
+.BR cgterm (1)

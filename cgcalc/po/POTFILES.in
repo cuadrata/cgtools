@@ -1,0 +1,4 @@
+# Files with translatable strings.
+cgcalc/cgcalc.c
+cgcalc/gtkcalc.c
+cgcalc/sr.c

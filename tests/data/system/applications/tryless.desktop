@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Tryless
+Exec=true
+TryExec=cgrun-no-such-program

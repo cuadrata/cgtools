@@ -1,0 +1,51 @@
+Copyright
+=========
+
+   CGHex - a binary editor
+   Copyright (C) 1998, 1999, 2000 Jaka Mocnik
+   Copyright (C) 2026 The CGTK authors
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+   For more details see the file COPYING at the top of cgtools.
+
+
+What is CGHex
+=============
+
+CGHex allows the user to load data from any file, view and edit it in either
+hex or ascii. A must for anyone playing games that use non-ascii format for
+saving.
+
+CGHex is a fork of GHex 1.2.1, ported from GNOME 1 to plain GTK 1.2. It is
+renamed because GHex is still an active project.
+
+
+Building
+========
+
+See the README at the top of cgtools.
+
+
+Use
+===
+
+  cghex [FILE...]
+
+
+Authors
+=======
+
+GHex was written by Jaka Mocnik <jaka.mocnik@kiss.uni-lj.si>, with
+Chema Celorio <chema@celorio.com>.

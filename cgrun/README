@@ -1,0 +1,84 @@
+Copyright
+=========
+
+   cgrun - a box to start programs from
+   Copyright (C) 2026 The CGTK authors
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+   For more details see the file COPYING at the top of cgtools.
+
+
+What is cgrun
+=============
+
+cgrun is a Run box: a small window with a line to type in, a Run
+button and a Close button. What is typed is run, as the program of
+that name if the desktop knows one and as a command line if not, and
+the window is gone. It is written for CGTK and comes from nowhere
+else.
+
+The line finishes itself as it is typed, from the lines that ran
+before and then from the names of the programs that have a .desktop
+file; what it adds is selected, so typing on replaces it. The lines
+that ran before can be let down from the arrow at its end. A box
+beneath runs the thing in a terminal.
+
+A third button, Programs, opens a list of the programs and the earlier
+command lines, which what is typed then narrows, with the best met and
+the most used first. cgrun --list starts with the list open.
+
+It is meant for a key. In Hyprland, for one:
+
+  bind = SUPER, R, exec, cgrun
+
+It has no .desktop file of its own and is in no menu. Its window
+cannot be resized, which tiling compositors take as a reason to float
+it; its class and application id is Cgrun. There is only ever one: a
+cgrun started while another is there takes its place.
+
+It is an ordinary window, and has the keyboard only as long as the
+window manager leaves it there. Where the keyboard follows the pointer
+a rule can keep it, as in Hyprland 0.54:
+
+  windowrule = match:class ^(Cgrun)$, stay_focused on
+
+It reads the .desktop files afresh each time it starts, and keeps no
+process running in between. What it remembers, how often each program
+was started and the last fifty command lines, is in
+$XDG_STATE_HOME/cgrun/history.
+
+
+Building
+========
+
+See the README at the top of cgtools. cgrun needs a CGTK whose GLib
+has key files and g_spawn_async(); configure looks for them.
+
+
+Use
+===
+
+  cgrun [--list]
+
+  Return            run the line; with the list open, start what is
+                    chosen in it, or the line if the list is empty
+  Control+Return    run the line as a command line, in a terminal
+  Shift+Return      with the list open, run the line whatever the
+                    list has
+  Up, Down          go through the lines that ran before; with the
+                    list open, choose in it
+  Escape            go
+
+The man page, cgrun(1), has the rest.

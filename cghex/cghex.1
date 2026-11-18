@@ -1,0 +1,86 @@
+.TH cghex 1 "November 2026" "cgtools 1.4.0"
+.\" one space after a full stop, not the sentence space roff adds
+.ss 12 0
+.SH NAME
+cghex \- a binary file editor
+.SH SYNOPSIS
+.B cghex
+.RI [ "toolkit options" ]
+.RI [ file ...]
+.SH DESCRIPTION
+.B CGHex
+shows the bytes of any file and lets them be changed, either as
+hexadecimal or as text: the hexadecimal digits are on the left, the
+same bytes as ASCII on the right, and the offset of each line before
+them. Clicking in either side puts the cursor there, and what is typed
+goes into that side: the digits 0 to 9 and a to f on the left, any
+printable character on the right.
+.PP
+Each file given opens on a page of its own in the one window, and the
+.B Files
+menu lists every open file.
+.B View \(-> Add view
+opens a second view of the same file, on a page of its own; a change
+made in one view shows in all.
+.PP
+.B Edit \(-> Insert mode
+(or the Insert key) chooses between inserting bytes and writing over
+them.
+.B Edit \(-> Group Data As
+shows the hexadecimal side in bytes, words of 16 bits or longwords of
+32. Changes can be undone and redone, as many times as the preferences
+allow.
+.PP
+.B Find
+and
+.B Replace
+look for a string of hexadecimal digits or of ASCII text, forward or
+backward.
+.B Jump to Byte
+moves the cursor to an offset, given in decimal or, after 0x, in
+hexadecimal.
+.PP
+.B File \(-> Export to HTML
+writes the file out as a set of web pages, one table of hexadecimal and
+text to a page, with links between them.
+.PP
+.B Tools \(-> Converter
+turns a number between binary, octal, decimal, hexadecimal and ASCII,
+and can take the value at the cursor.
+.B Tools \(-> Character Table
+lists the 256 byte values in each of these; a double click on a row
+puts that byte in at the cursor.
+.PP
+The preferences choose the font, how many changes can be undone, how
+the cursor's offset is shown in the status bar (in decimal,
+hexadecimal, or a printf format of your own with one %d, %o, %x or
+%X), whether the offsets column is shown, and how new views group
+their data.
+.SH OPTIONS
+.TP
+.BR \-\-help ", " \-h
+Show a summary of the options and exit.
+.TP
+.B \-\-version
+Show the version and exit.
+.TP
+.B \-\-
+Take everything after it as a file, even when it starts with a dash.
+.PP
+The usual GTK options, such as
+.BR \-\-display ,
+are also understood.
+.SH FILES
+.TP
+.I $XDG_CONFIG_HOME/cghex/cghexrc
+The preferences.
+Without the variable,
+.I ~/.config/cghex/cghexrc
+is used.
+.SH AUTHORS
+CGHex is GHex 1.2.1, made a plain CGTK program. GHex was written by
+Jaka Mocnik, with Chema Celorio.
+.SH SEE ALSO
+.BR cgcalc (1),
+.BR xxd (1),
+.BR od (1)

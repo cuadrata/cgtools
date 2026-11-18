@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Inner Thing
+Exec=inner "a b" --name=%c %k 100%% %u %i
+Terminal=true
+Path=/tmp

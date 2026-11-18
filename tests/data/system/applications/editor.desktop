@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Editor
+GenericName=Text Editor
+Comment=Writes text
+Exec=editor --new %F
+Keywords=text;write;

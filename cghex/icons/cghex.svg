@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- cghex's icon, drawn for 48 pixels. Every size of it is this drawing, scaled.
+     Three cells of a honeycomb. The purple is the Altus theme's.
+     Copyright (C) 2026 The CGTK authors. Under the tools' licence: see COPYING. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<path d="M26.85 13.80L20.75 24.37L8.55 24.37L2.45 13.80L8.55 3.23L20.75 3.23Z" fill="#a99bf0" stroke="#000000" stroke-linejoin="round"/>
+<path d="M4.05 13.80L9.35 4.62L19.95 4.62" fill="none" stroke="#e0dafd" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M25.25 13.80L19.95 22.98L9.35 22.98" fill="none" stroke="#6a58c8" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M45.55 24.37L39.45 34.93L27.25 34.93L21.15 24.37L27.25 13.80L39.45 13.80Z" fill="#7966d8" stroke="#000000" stroke-linejoin="round"/>
+<path d="M22.75 24.37L28.05 15.19L38.65 15.19" fill="none" stroke="#c4baf8" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M43.95 24.37L38.65 33.55L28.05 33.55" fill="none" stroke="#3b2d8f" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M26.85 34.93L20.75 45.50L8.55 45.50L2.45 34.93L8.55 24.37L20.75 24.37Z" fill="#5646b4" stroke="#000000" stroke-linejoin="round"/>
+<path d="M4.05 34.93L9.35 25.75L19.95 25.75" fill="none" stroke="#9485e6" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M25.25 34.93L19.95 44.11L9.35 44.11" fill="none" stroke="#2a1f6e" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg>

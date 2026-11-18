@@ -1,0 +1,56 @@
+Copyright
+=========
+
+   CGCalc - a double precision calculator
+   Copyright (C) 1998 Free Software Foundation
+   Copyright (C) 2026 The CGTK authors
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+   For more details see the file COPYING at the top of cgtools.
+
+
+What is CGCalc
+==============
+
+CGCalc is a simple double precision calculator similar to xcalc, with
+the usual scientific functions: trigonometry in degrees, radians or
+grads, logarithms, powers, factorials, parentheses and a memory. A
+programmer's keypad works on words of 8 to 64 bits in hexadecimal,
+decimal, octal or binary, with the bitwise operations and shifts, and
+shows every bit of the word. Run with -analog, it is a slide rule
+instead, as the X11R3 xcalc had.
+
+CGCalc is a fork of GCalc, the calculator of gnome-utils 1.4.1.2,
+ported from GNOME 1 to plain GTK 1.2. It is renamed because it no
+longer belongs to gnome-utils, and GNOME has a calculator of its own.
+
+
+Building
+========
+
+See the README at the top of cgtools.
+
+
+Use
+===
+
+  cgcalc [-analog]
+
+
+Authors
+=======
+
+GCalc was written by George Lebl <jirka@5z.com>. The slide rule is
+the X11R3 xcalc's, brought over by Jamie Zawinski <jwz@jwz.org>.

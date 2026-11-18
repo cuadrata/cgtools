@@ -1,0 +1,74 @@
+.\" cgcalc.1 - CGCalc
+.\" Copyright 2001  Jochen Voss
+.TH cgcalc 1 "November 2026" "cgtools 1.4.0"
+.\" one space after a full stop, not the sentence space roff adds
+.ss 12 0
+.SH NAME
+cgcalc \- a double precision calculator
+.SH SYNOPSIS
+.B cgcalc
+.RB [ \-analog ]
+.SH DESCRIPTION
+.B CGCalc
+is a double precision calculator application. It provides advanced
+scientific and mathematical features such as trigonometric functions
+(sine, cosine, tangent) and logarithms (log, ln).
+.PP
+Most buttons have a key as well: the digits, operators and parentheses
+are typed as themselves, Return or = gives the result, BackSpace takes
+back the last digit, Delete clears the entry and Escape clears
+everything. On the scientific keypad, the letters on the function
+buttons (s, c, t, l, r, e, p, i, d) press them. Edit \(-> Copy puts
+the result in the clipboard.
+.SS Programmer mode
+View \(-> Programmer changes to a keypad for whole numbers: words of
+8, 16, 32 or 64 bits, shown in hexadecimal, decimal, octal or binary,
+and signed (two's complement) or unsigned, as SGN is down or up.
+Arithmetic wraps round within the word. AND, OR, XOR, NOT, MOD and the
+shifts (<< and >>) are there, taken in C's order of precedence; >>
+shifts a signed word arithmetically, and division truncates as C's
+does. Every bit of the word is shown beneath the display, and clicking
+one flips it.
+.PP
+The letters a to f type the hex digits, and &, |, ^, ~, %, < and >
+press AND, OR, XOR, NOT, MOD, << and >>. F5, F6, F7 and F8 choose
+hexadecimal, decimal, octal and binary, and F12, F2, F3 and F4 a word of
+64, 32, 16 and 8 bits. Edit \(-> Copy writes a word as C would, with
+0x, 0 or 0b before it.
+.PP
+Changing keypads carries the number shown and the memory across, cut to
+a whole word on the way to the programmer's; a calculation left
+unfinished is dropped.
+.SH OPTIONS
+.TP
+.B \-analog
+Run as a slide rule instead, as the X11R3
+.BR xcalc (1)
+did. On the slide, button 1 puts its left index under the pointer,
+button 2 drags it and button 3 puts its right index under the pointer.
+Elsewhere, button 1 moves the hairline, button 2 makes the rule twice
+as long and button 3 half as long again. Shift with button 2 or 3
+quits.
+.TP
+.B \-\-help
+Show a summary of the options and exit.
+.TP
+.B \-\-version
+Show the version and exit.
+.PP
+The usual GTK options, such as
+.BR \-\-display ,
+are also understood.
+.SH AUTHOR
+.B GCalc
+was written by George Lebl (<jirka@5z.com>).
+.B CGCalc
+is GCalc from gnome-utils 1.4.1.2, made a plain GTK program.
+
+This manual page was written by Jochen Voss
+<voss@mathematik.uni-kl.de>.
+
+.SH SEE ALSO
+.BR cghex (1),
+.BR xcalc (1),
+.BR dc (1)

@@ -1,0 +1,44 @@
+# Made by autoreconf -vif
+/ABOUT-NLS
+/aclocal.m4
+/autom4te.cache/
+/build-aux/
+/config.h.in
+/configure
+*~
+Makefile.in
+/m4/
+/*/po/Makefile.in.in
+/*/po/Makevars.template
+/*/po/Rules-quot
+/*/po/*.sed
+/*/po/*.header
+/*/po/*.sin
+/*/po/fetch-po
+
+# Made by configure
+Makefile
+/config.h
+/config.log
+/config.status
+/stamp-h1
+/*/po/POTFILES
+
+# Made by make
+.deps/
+.dirstamp
+*.o
+/*/po/*.pot
+/*/po/*.gmo
+/*/po/stamp-po
+/cghex/cghex
+/cgcalc/cgcalc
+/cgrun/cgrun
+/tests/cghex-document
+/tests/cgrun-apps
+/tests/*.log
+/tests/*.trs
+/test-suite.log
+/cghex-document.tmp
+/cgrun-apps.tmp
+/cgtools-*.tar.*

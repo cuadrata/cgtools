@@ -1,0 +1,12 @@
+# Files with translatable strings.
+cghex/chartable.c
+cghex/config.c
+cghex/converter.c
+cghex/findreplace.c
+cghex/gtkhex.c
+cghex/hex-document-ui.c
+cghex/hex-document.c
+cghex/main.c
+cghex/preferences.c
+cghex/ui.c
+cghex/window.c
