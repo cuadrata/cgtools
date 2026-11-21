@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- cgedit's icon, drawn for 48 pixels. Every size of it is this drawing, scaled.
+     A sheet of writing and a pencil. Its purples are the Altus theme's.
+     Copyright (C) 2026 The CGTK authors. Under the tools' licence: see COPYING. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+<path d="M7.5 3.5H28.5L36.5 11.5V44.5H7.5Z" fill="#f7f7f9" stroke="#000000" stroke-linejoin="round"/>
+<path d="M35.5 43.5H8.5" fill="none" stroke="#9c9ea3"/>
+<path d="M35.5 12.5V43.5" fill="none" stroke="#9c9ea3"/>
+<path d="M28.5 3.5V11.5H36.5Z" fill="#d9dadc" stroke="#000000" stroke-linejoin="round"/>
+<path d="M12 11H24" fill="none" stroke="#7966d8" stroke-width="2"/>
+<path d="M12 17H32M12 22H32M12 27H27M12 32H21" fill="none" stroke="#63656b" stroke-width="2"/>
+<path d="M19.5 42.5L22 35.8L26.2 40Z" fill="#d9dadc" stroke="#000000" stroke-linejoin="round"/>
+<path d="M19.5 42.5L20.5 39.8L22.2 41.5Z" fill="#000000" stroke="#000000" stroke-linejoin="round"/>
+<path d="M22 35.8L37.8 20L42 24.2L26.2 40Z" fill="#7966d8" stroke="#000000" stroke-linejoin="round"/>
+<path d="M25.4 35.4L39.2 21.6" fill="none" stroke="#a99bf0"/>
+<path d="M37.8 20L40.6 17.2L44.8 21.4L42 24.2Z" fill="#3b2d8f" stroke="#000000" stroke-linejoin="round"/>
+</svg>

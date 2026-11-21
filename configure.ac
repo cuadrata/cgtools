@@ -69,8 +69,8 @@ dnl them with, which is there wherever CGTK is.
 PKG_CHECK_MODULES([PNG], [libpng >= 1.6])
 
 dnl Translations, from the system's gettext. Each program keeps its own
-dnl catalogues and text domain, in cghex/po, cgcalc/po, cgrun/po and
-dnl cgpaint/po.
+dnl catalogues and text domain, in cghex/po, cgcalc/po, cgrun/po,
+dnl cgpaint/po and cgedit/po.
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.19.6])
 AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.6])
@@ -81,5 +81,6 @@ cghex/po/Makefile.in
 cgcalc/po/Makefile.in
 cgrun/po/Makefile.in
 cgpaint/po/Makefile.in
+cgedit/po/Makefile.in
 ])
 AC_OUTPUT

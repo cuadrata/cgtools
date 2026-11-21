@@ -1,0 +1,110 @@
+Copyright
+=========
+
+   cgedit - a simple text editor
+   Copyright (C) 2026 The CGTK authors
+
+   encoding.c and encoding.h, which find out the codeset a file is in,
+   are from Leafpad 0.8.19:
+   Copyright (C) 2004-2005 Tarot Osuji
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+   For more details see the file COPYING at the top of cgtools.
+
+
+What is cgedit
+==============
+
+cgedit is a simple text editor, as Leafpad is: a window with menus and
+the text and nothing else, one file to a window. It is written for
+CGTK. It does what Leafpad does and looks as Leafpad looks, but only
+the finding out of codesets is Leafpad's code; the rest is new, as
+Leafpad stands on the text widget of GTK 2 and there is nothing like
+that widget here.
+
+What it has, which is what Leafpad has:
+
+  - files in other codesets than the locale's, read and written, with
+    the codeset found out on opening or chosen in the file selector,
+    and line ends that are LF, CR+LF or CR, kept as they were found
+  - undo and redo without limit
+  - find, find next and previous, and replace, a place at a time or
+    all at once, with every place found shown up
+  - jump to a line
+  - a font of the user's choosing, word wrap, line numbers, and auto
+    indent, kept from one time to the next with the window's size
+  - a tab or Shift and a tab to set selected lines further in or back
+  - files and text taken when dropped on it, and text dragged out
+  - the options --codeset, --tab-width and --jump
+
+The menus, their keys and the questions asked are Leafpad's.
+
+
+The editor widget
+=================
+
+The toolkit's own text widget, GtkText, is as it was in GTK 1.2: it
+has Emacs's keys built in, which a menu's keys cannot take from it,
+and it does not undo. cgedit does not use it. It has a widget of its
+own, GtkEditor, in gtkeditor.c, over a text of its own, in textbuf.c,
+which knows nothing of the toolkit.
+
+The text is UTF-8 with a gap where it was last changed, and an index
+of where each line starts. A file of a million lines opens in about a
+second and is then typed in as a short one is.
+
+The widget is written as one of the toolkit's would be, to the
+toolkit's 1.4.0 as it was released and with nothing added to it, so
+that it could go into the toolkit one day as it is. Its keys are the
+usual ones and no others, and a key it has no use for it leaves to the
+window, so a menu can have any key.
+
+It draws a character after another from left to right, as everything
+in the toolkit does. Writing that goes from right to left, or whose
+letters join or stack, is not laid out as it should be. Leafpad had
+Pango for that.
+
+
+What is not as Leafpad has it
+=============================
+
+It does not print: nothing in the toolkit prints. Leafpad was built
+without printing too, where there was nothing to print with.
+
+A file that starts with the mark of UTF-16 is read as that. Leafpad
+did not look for it.
+
+Control+T, which keeps the window above the others, asks the desktop
+for that; under Wayland there is nothing to ask.
+
+It is not translated yet: it has its text domain and cgedit/po, with
+no catalogues in it.
+
+
+Building
+========
+
+See the README at the top of cgtools.
+
+
+Use
+===
+
+  cgedit [--codeset=CODESET] [--tab-width=WIDTH] [--jump=LINE] [FILE]
+
+The settings are kept in cgedit/cgeditrc, in $XDG_CONFIG_HOME or in
+~/.config.
+
+The man page, cgedit(1), has the menus and the keys.

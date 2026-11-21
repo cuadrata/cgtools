@@ -7,7 +7,7 @@
 set -e
 cd "$(dirname "$0")"
 
-for t in cghex cgcalc cgpaint; do
+for t in cghex cgcalc cgpaint cgedit; do
     for s in 16 22 24 32 48 64 128 256; do
         rsvg-convert -w $s -h $s $t/icons/$t.svg -o $t/icons/$t-$s.png
     done

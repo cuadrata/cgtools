@@ -2,28 +2,31 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = cghex/po cgcalc/po cgrun/po cgpaint/po
+SUBDIRS = cghex/po cgcalc/po cgrun/po cgpaint/po cgedit/po
 
 AM_CPPFLAGS = \
         -DLOCALEDIR=\"$(localedir)\" \
         $(GTK_CFLAGS)
 
-bin_PROGRAMS = cghex/cghex cgcalc/cgcalc cgrun/cgrun cgpaint/cgpaint
-man_MANS = cghex/cghex.1 cgcalc/cgcalc.1 cgrun/cgrun.1 cgpaint/cgpaint.1
+bin_PROGRAMS = cghex/cghex cgcalc/cgcalc cgrun/cgrun cgpaint/cgpaint cgedit/cgedit
+man_MANS = cghex/cghex.1 cgcalc/cgcalc.1 cgrun/cgrun.1 cgpaint/cgpaint.1 cgedit/cgedit.1
 
 desktopdir = $(datadir)/applications
-dist_desktop_DATA = cghex/cghex.desktop cgcalc/cgcalc.desktop cgpaint/cgpaint.desktop
+dist_desktop_DATA = cghex/cghex.desktop cgcalc/cgcalc.desktop cgpaint/cgpaint.desktop \
+        cgedit/cgedit.desktop
 
 # The icons: each tool's one drawing, the sizes of it rendered beforehand
 # by render-icons.sh, and an XPM, which is in the tool too, for whatever
 # still looks in pixmaps.
-icontools = cghex cgcalc cgpaint
+icontools = cghex cgcalc cgpaint cgedit
 iconsizes = 16 22 24 32 48 64 128 256
 hicolordir = $(datadir)/icons/hicolor
 scalabledir = $(hicolordir)/scalable/apps
-dist_scalable_DATA = cghex/icons/cghex.svg cgcalc/icons/cgcalc.svg cgpaint/icons/cgpaint.svg
+dist_scalable_DATA = cghex/icons/cghex.svg cgcalc/icons/cgcalc.svg cgpaint/icons/cgpaint.svg \
+        cgedit/icons/cgedit.svg
 pixmapsdir = $(datadir)/pixmaps
-dist_pixmaps_DATA = cghex/icons/cghex.xpm cgcalc/icons/cgcalc.xpm cgpaint/icons/cgpaint.xpm
+dist_pixmaps_DATA = cghex/icons/cghex.xpm cgcalc/icons/cgcalc.xpm cgpaint/icons/cgpaint.xpm \
+        cgedit/icons/cgedit.xpm
 
 install-data-local:
 	for t in $(icontools); do for s in $(iconsizes); do \
@@ -39,14 +42,16 @@ uninstall-local:
 
 EXTRA_DIST = $(man_MANS) history \
         cghex/README cgcalc/README \
-        cgrun/README cgpaint/README \
+        cgrun/README cgpaint/README cgedit/README \
         render-icons.sh \
         cghex/icons/cghex-16.png cghex/icons/cghex-22.png cghex/icons/cghex-24.png cghex/icons/cghex-32.png \
         cghex/icons/cghex-48.png cghex/icons/cghex-64.png cghex/icons/cghex-128.png cghex/icons/cghex-256.png \
         cgcalc/icons/cgcalc-16.png cgcalc/icons/cgcalc-22.png cgcalc/icons/cgcalc-24.png cgcalc/icons/cgcalc-32.png \
         cgcalc/icons/cgcalc-48.png cgcalc/icons/cgcalc-64.png cgcalc/icons/cgcalc-128.png cgcalc/icons/cgcalc-256.png \
         cgpaint/icons/cgpaint-16.png cgpaint/icons/cgpaint-22.png cgpaint/icons/cgpaint-24.png cgpaint/icons/cgpaint-32.png \
-        cgpaint/icons/cgpaint-48.png cgpaint/icons/cgpaint-64.png cgpaint/icons/cgpaint-128.png cgpaint/icons/cgpaint-256.png
+        cgpaint/icons/cgpaint-48.png cgpaint/icons/cgpaint-64.png cgpaint/icons/cgpaint-128.png cgpaint/icons/cgpaint-256.png \
+        cgedit/icons/cgedit-16.png cgedit/icons/cgedit-22.png cgedit/icons/cgedit-24.png cgedit/icons/cgedit-32.png \
+        cgedit/icons/cgedit-48.png cgedit/icons/cgedit-64.png cgedit/icons/cgedit-128.png cgedit/icons/cgedit-256.png
 
 # cghex
 
@@ -159,3 +164,29 @@ tests_cgpaint_image_LDADD = $(cgpaint_cgpaint_LDADD)
 TESTS += tests/cgpaint-image
 CLEANFILES += cgpaint-image.tmp cgpaint-image.tmp.bmp cgpaint-image.tmp.xpm \
         cgpaint-image.tmp.png "1 cgpaint-image.tmp.xpm"
+
+# cgedit
+
+cgedit_cgedit_SOURCES = \
+        cgedit/cgedit.c \
+        cgedit/cgedit.h \
+        cgedit/encoding.c \
+        cgedit/encoding.h \
+        cgedit/gtkeditor.c \
+        cgedit/gtkeditor.h \
+        cgedit/textbuf.c \
+        cgedit/textbuf.h
+cgedit_cgedit_CPPFLAGS = $(AM_CPPFLAGS) -I$(top_srcdir)/cgedit -DGETTEXT_PACKAGE=\"cgedit\"
+cgedit_cgedit_LDADD = $(GTK_LIBS) $(LIBINTL)
+
+# The text cgedit edits, without a window: make check changes one at
+# random beside a plain copy of it and looks that the two agree, undoes
+# and redoes it all, and finds and replaces.
+check_PROGRAMS += tests/cgedit-text
+tests_cgedit_text_SOURCES = \
+        tests/cgedit-text.c \
+        cgedit/textbuf.c \
+        cgedit/textbuf.h
+tests_cgedit_text_CPPFLAGS = $(cgedit_cgedit_CPPFLAGS)
+tests_cgedit_text_LDADD = $(GTK_LIBS) $(LIBINTL)
+TESTS += tests/cgedit-text

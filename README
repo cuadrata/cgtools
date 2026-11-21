@@ -2,14 +2,15 @@ cgtools
 =======
 
 Small tools for CGTK. Two are ported from GNOME 1 as plain CGTK
-programs, with nothing of GNOME left in them, and two are written for
-CGTK.
+programs, with nothing of GNOME left in them, and three are written
+for CGTK.
 
   cghex    a binary editor, from GHex 1.2.1
   cgcalc   a scientific and programmer's calculator, and a slide rule,
            from GCalc of gnome-utils 1.4.1.2
   cgrun    a box to start programs from
   cgpaint  a classic paint program
+  cgedit   a simple text editor
 
 Each has a README of its own in its directory, with its copyright,
 what it does and who wrote it.
@@ -30,9 +31,10 @@ make them first:
 
 make check edits a file through cghex's document, with no window, and
 looks at what it then holds; has cgrun read the .desktop files in
-tests/data, match names against them and start programs; and has
-cgpaint draw lines and shapes on a picture, and save one as each kind
-of file it knows and read it again.
+tests/data, match names against them and start programs; has cgpaint
+draw lines and shapes on a picture, and save one as each kind of file
+it knows and read it again; and changes a text as cgedit keeps one, at
+random, and looks that it is what it should be, undone and redone.
 
 A release tarball comes with its configure script, and starts at
 ./configure.
@@ -41,10 +43,10 @@ Translations
 ------------
 
 Each program keeps its own catalogues and text domain, in cghex/po,
-cgcalc/po, cgrun/po and cgpaint/po, and installs them as cghex.mo,
-cgcalc.mo and cgrun.mo. The strings new in the tools, and all of
-cgrun's, were machine translated and have not been reviewed by native
-speakers. cgpaint has no catalogues yet.
+cgcalc/po, cgrun/po, cgpaint/po and cgedit/po, and installs them as
+cghex.mo, cgcalc.mo and cgrun.mo. The strings new in the tools, and
+all of cgrun's, were machine translated and have not been reviewed by
+native speakers. cgpaint and cgedit have no catalogues yet.
 
 History
 -------
@@ -58,7 +60,7 @@ Licence
 -------
 
 The tools are under the GNU General Public License, version 2 or later
-(COPYING), as GHex and gnome-utils were.
+(COPYING), as GHex, gnome-utils and Leafpad were.
 
 The tools' icons were drawn for them, and are under the GPL with the
 rest. Each is one picture, as cghex/icons/cghex.svg, with the sizes of

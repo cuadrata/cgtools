@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=CGEdit
+GenericName=Text Editor
+Comment=Edit text files
+Exec=cgedit %f
+Icon=cgedit
+Terminal=false
+StartupWMClass=Cgedit
+MimeType=text/plain;
+Categories=GTK;Utility;TextEditor;

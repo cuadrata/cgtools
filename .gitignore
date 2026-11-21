@@ -35,9 +35,11 @@ Makefile
 /cgcalc/cgcalc
 /cgrun/cgrun
 /cgpaint/cgpaint
+/cgedit/cgedit
 /tests/cghex-document
 /tests/cgrun-apps
 /tests/cgpaint-image
+/tests/cgedit-text
 /tests/*.log
 /tests/*.trs
 /test-suite.log

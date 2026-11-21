@@ -1,0 +1,175 @@
+.\" cgedit.1 - cgedit
+.\" Copyright (C) 2026 The CGTK authors
+.TH cgedit 1 "November 2026" "cgtools 1.4.0"
+.\" one space after a full stop, not the sentence space roff adds
+.ss 12 0
+.SH NAME
+cgedit \- a simple text editor
+.SH SYNOPSIS
+.B cgedit
+.RI [ "toolkit options" ]
+.RB [ \-\-codeset=\fICODESET\fP ]
+.RB [ \-\-tab\-width=\fIWIDTH\fP ]
+.RB [ \-\-jump=\fILINE\fP ]
+.RI [ file ]
+.SH DESCRIPTION
+.B cgedit
+edits one text file in a window that has menus and the text and nothing
+else, as Leafpad does, and it does what Leafpad does: it reads and
+writes files in other codesets than the locale's and finds out which a
+file is in, undoes and redoes without limit, finds and replaces,
+indents a new line as the one before it, numbers the lines, wraps them,
+and takes files and text that are dropped on it. It does not print.
+.PP
+The window is called after the file. The name is in round brackets if
+there is no such file yet, in angle brackets if the file cannot be
+written, and has a star before it while the text is not as the file
+has it.
+.PP
+A
+.I file
+that does not exist is a new file of that name, which is made when it
+is first saved.
+.SH OPTIONS
+.TP
+.BI \-\-codeset= CODESET
+Read the file as text in this codeset, by any name that
+.BR iconv (1)
+knows, and do not find out.
+.TP
+.BI \-\-tab\-width= WIDTH
+Make a tab this many spaces wide. It is 8 otherwise.
+.TP
+.BI \-\-jump= LINE
+Put the cursor at this line of the file.
+.TP
+.B \-\-help
+Show the options and exit.
+.TP
+.B \-\-version
+Show the version and exit.
+.PP
+The toolkit's own options, such as
+.BR \-\-display ,
+are understood as well.
+.SH MENUS
+.SS File
+.TP
+.B New, Open, Save, Save As
+The usual. If the text has changes that are not saved, it is asked
+first whether to save them.
+.B Open
+and
+.B Save As
+ask for the codeset with the file:
+.B Open
+can find it out,
+.B Save As
+starts from the one the file was read in, and both offer the locale's,
+UTF-8, those the locale's language has been written in, and
+.BR "Other Codeset" ,
+which takes any name
+.BR iconv (1)
+knows.
+.B Save As
+also asks how lines end: LF, CR+LF or CR. A file is saved with the
+line ends it was read with.
+.TP
+.B Quit
+Asks about changes that are not saved, and ends.
+.SS Edit
+.B Undo
+and
+.B Redo
+go back and forth through everything done since the file was opened.
+What is typed is undone a word at a time.
+.BR Cut ,
+.BR Copy ,
+.BR Paste ,
+.B Delete
+and
+.B Select All
+are as everywhere. The same are in the menu the right button brings up.
+.SS Search
+.TP
+.B Find
+Asks what to find, and whether capitals matter. Every place it is at
+is shown up, and the first after the cursor is selected.
+.B Find Next
+and
+.B Find Previous
+go on from there, and round the ends of the text.
+.TP
+.B Replace
+Asks what to find and what to put in its place. Each place from the
+cursor on is then gone to and asked about: Yes replaces it, No leaves
+it, Cancel stops. With
+.B Replace all at once
+they are all replaced without asking, and undone together.
+.TP
+.B Jump To
+Goes to a line by its number.
+.SS Options
+.TP
+.B Font
+Chooses the font of the text. Until one is chosen it is the theme's.
+.TP
+.B Word Wrap
+Breaks a line that is wider than the window after its last word that
+fits.
+.TP
+.B Line Numbers
+Shows each line's number at its left.
+.TP
+.B Auto Indent
+Starts a new line as far in as the one before it.
+.PP
+These and the window's size are kept for the next time.
+.SH KEYS
+.TP
+.B Control+N, O, S, Q
+New, Open, Save, Quit. Shift+Control+S is Save As.
+.TP
+.B Control+Z, Shift+Control+Z
+Undo, Redo. Control+Y is Redo too.
+.TP
+.B Control+X, C, V, A
+Cut, Copy, Paste, Select All.
+.TP
+.B Control+F, G, H, J
+Find, Find Next, Replace, Jump To. Shift+Control+G is Find Previous.
+.TP
+.B Arrows, Home, End, Page Up, Page Down
+Move the cursor; with Control, by words, to the ends of the text, and
+so on; with Shift, select.
+.TP
+.B Tab, Shift+Tab
+With more than one line selected, set the lines a tab further in, or
+bring them back out.
+.TP
+.B Insert
+Typing writes over what is there, until it is pressed again.
+.TP
+.B Control+Tab
+Makes a tab four spaces wide, and eight again.
+.TP
+.B Control+T
+Keeps the window above the others, and lets it be again, where the
+desktop allows a window to ask for that.
+.SH MOUSE
+Press and drag selects; twice selects a word and three times a line;
+Shift and a press selects from the cursor to there. The middle button
+pastes what is selected, here or in another window. What is selected
+can be dragged elsewhere in the text, where it is moved, or copied
+with Control held, and to other programs. A file dropped on the window
+is opened.
+.SH FILES
+.TP
+.I $XDG_CONFIG_HOME/cgedit/cgeditrc
+The settings.
+.I ~/.config
+is used if
+.B XDG_CONFIG_HOME
+is not set.
+.SH SEE ALSO
+.BR iconv (1)
