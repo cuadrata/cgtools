@@ -1,0 +1,187 @@
+.\" cgpaint.1 - cgpaint
+.\" Copyright (C) 2026 The CGTK authors
+.TH cgpaint 1 "November 2026" "cgtools 1.4.0"
+.\" one space after a full stop, not the sentence space roff adds
+.ss 12 0
+.SH NAME
+cgpaint \- a paint program
+.SH SYNOPSIS
+.B cgpaint
+.RI [ "toolkit options" ]
+.RI [ file ]
+.SH DESCRIPTION
+.B cgpaint
+draws pictures, as the Paint of Windows 98 did. Its window has the
+picture in the middle, a box of sixteen tools at the left, a box of
+colours at the bottom, and beneath that a line that says what the
+chosen tool is for, which point of the picture the pointer is at, and
+how large the thing being drawn is.
+.PP
+The left button draws in the foreground's colour and the right button
+in the background's. Each takes its colour from the colour box in the
+same way, and the two are shown at the box's left, the foreground's
+over the background's. Pressing a colour of the box twice changes it,
+as
+.B Colors \(-> Edit Colors
+does for the one last taken.
+.PP
+The picture starts white, 640 points by 480. The three handles at its
+right, at its bottom and at their corner give it another size when
+dragged, and so does
+.BR "Image \(-> Attributes" .
+What is added is of the background's colour.
+.SH TOOLS
+The box beneath the tools holds what the chosen tool can be told, and
+the choice made there is marked.
+.TP
+.B Free-Form Select, Select
+Drag round a part of the picture, or a rectangle over it. What is
+selected can then be dragged elsewhere, leaving the background's
+colour where it was; with Control held, it leaves a copy of itself.
+It is laid down when something else is done: a press outside it,
+another tool, Escape. The box chooses whether it is laid down whole or
+without what in it is of the background's colour, as
+.B Image \(-> Draw Opaque
+also does.
+.TP
+.B Eraser
+Rubs out with the background's colour, in one of four sizes. The right
+button rubs out only what is of the foreground's colour.
+.TP
+.B Fill With Color
+Fills the area of one colour that the pointer is in.
+.TP
+.B Pick Color
+Takes the colour under the pointer, for the foreground with the left
+button and for the background with the right; then the tool that was
+chosen before is chosen again.
+.TP
+.B Magnifier
+Shows the picture four times its size, about the point pressed, and at
+its own size again when pressed there; the box has one, two, six and
+eight times.
+.TP
+.B Pencil
+Draws a line one point wide.
+.TP
+.B Brush
+Draws with one of twelve brushes: round, square, and slanted either
+way, in three sizes.
+.TP
+.B Airbrush
+Sprays points for as long as the button is down, in one of three
+sizes.
+.TP
+.B Text
+Drag out a box and type. The text breaks at the box's edge, and the
+box grows downwards as it has to; BackSpace takes the last character
+away. It is laid down as a selection is, and can be dragged while it
+is typed. The font is chosen in
+.BR "View \(-> Text Font" ,
+and the box chooses whether the text has the background's colour
+behind it.
+.TP
+.B Line
+Draws a straight line, one to five points wide.
+.TP
+.B Curve
+Draw a straight line; then drag anywhere to bend it, and once more to
+bend it again.
+.TP
+.B Rectangle, Ellipse, Rounded Rectangle
+Drag from corner to corner. The box chooses the edge alone, the edge
+with the other button's colour inside, or the whole in one colour. The
+edge is as wide as the Line tool's.
+.TP
+.B Polygon
+Drag the first side, then press where each next corner is to be.
+Pressing twice, or near the first corner, closes it.
+.PP
+With Shift held, a line keeps level, upright or at half a right angle,
+and a shape is as wide as it is high. The other button, pressed while
+one is down, undoes what that one was doing, and so does Escape.
+.SH MENUS
+.TP
+.B File
+New, Open, Save and Save As. A picture that has changed is asked about
+before it goes.
+.TP
+.B Edit
+Undo and Repeat; Cut, Copy and Paste, which use the clipboard, where a
+picture is a PNG file; Clear Selection and Select All;
+.BR "Copy To" ,
+which saves what is selected as a file, and
+.BR "Paste From" ,
+which pastes a file. What is pasted is selected, at the top left of
+what the window shows.
+.TP
+.B View
+Shows and hides the tool box, the colour box and the status bar.
+.B Zoom
+has the picture's own size, four times that, any of one, two, four,
+six and eight times, and a grid between the points, which is drawn
+from four times up.
+.TP
+.B Image
+.B Flip and Rotate
+turns the picture over or by quarters of a circle;
+.B Stretch and Skew
+makes it wider or higher by hundredths, and slants it by degrees;
+.B Invert Colors
+gives every point its opposite. All three work on what is selected, if
+anything is, and otherwise on the whole picture.
+.B Clear Image
+makes it all the background's colour.
+.SH FILES
+Three kinds of file are read and written: Windows bitmaps, XPM and
+PNG. A file says itself what it is when it is read. When one is
+written, the end of its name says:
+.BR .bmp ,
+.B .xpm
+or
+.BR .png ;
+a name with none of these is given
+.BR .bmp .
+.PP
+A bitmap is written with 24 bits to a point. Bitmaps of 1, 4, 8, 24
+and 32 bits are read, with a header of Windows or of OS/2, unless they
+are packed. A picture has nothing that is seen through: where a PNG
+file or an XPM file has, the picture is white.
+.SH OPTIONS
+.TP
+.B \-\-help
+Say how it is used, and exit.
+.TP
+.B \-\-version
+Say which version it is, and exit.
+.PP
+The usual toolkit options, such as
+.BR \-\-display ,
+are understood too.
+.SH KEYS
+.TP
+.B Control+N, Control+O, Control+S, Control+Q
+New, Open, Save, Exit.
+.TP
+.B Control+Z, Control+Y
+Undo, Repeat.
+.TP
+.B Control+X, Control+C, Control+V, Delete, Control+A
+Cut, Copy, Paste, Clear Selection, Select All.
+.TP
+.B Control+T, Control+L
+Show or hide the tool box, the colour box.
+.TP
+.B Control+Page Up, Control+Page Down, Control+G
+The picture's own size, four times that, the grid.
+.TP
+.B Control+R, Control+W, Control+I, Control+E, Control+Shift+N
+Flip and Rotate, Stretch and Skew, Invert Colors, Attributes, Clear
+Image.
+.SH BUGS
+What is selected cannot be stretched by handles, text is typed at its
+end only, and nothing is printed.
+.SH SEE ALSO
+.BR cghex (1),
+.BR cgcalc (1),
+.BR cgrun (1)

@@ -40,7 +40,7 @@ AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 PKG_PROG_PKG_CONFIG
 
-dnl The maths library, for cgcalc only.
+dnl The maths library, for cgcalc and cgpaint.
 tools_save_LIBS="$LIBS"
 LIBS=
 AC_SEARCH_LIBS([pow], [m])
@@ -64,8 +64,13 @@ AC_CHECK_FUNC([gtk_window_set_default_icon_name], [],
   [AC_MSG_ERROR([this CGTK is too old: it has no gtk_window_set_default_icon_name()])])
 LIBS="$tools_save_LIBS"
 
+dnl cgpaint writes PNG files itself, with the libpng that CGTK reads
+dnl them with, which is there wherever CGTK is.
+PKG_CHECK_MODULES([PNG], [libpng >= 1.6])
+
 dnl Translations, from the system's gettext. Each program keeps its own
-dnl catalogues and text domain, in cghex/po, cgcalc/po and cgrun/po.
+dnl catalogues and text domain, in cghex/po, cgcalc/po, cgrun/po and
+dnl cgpaint/po.
 AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_VERSION([0.19.6])
 AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.6])
@@ -75,5 +80,6 @@ Makefile
 cghex/po/Makefile.in
 cgcalc/po/Makefile.in
 cgrun/po/Makefile.in
+cgpaint/po/Makefile.in
 ])
 AC_OUTPUT

@@ -1,0 +1,4 @@
+# Files with translatable strings.
+cgpaint/cgpaint.c
+cgpaint/file.c
+cgpaint/view.c

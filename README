@@ -2,13 +2,14 @@ cgtools
 =======
 
 Small tools for CGTK. Two are ported from GNOME 1 as plain CGTK
-programs, with nothing of GNOME left in them, and one is written for
+programs, with nothing of GNOME left in them, and two are written for
 CGTK.
 
-  cghex   a binary editor, from GHex 1.2.1
-  cgcalc  a scientific and programmer's calculator, and a slide rule,
-          from GCalc of gnome-utils 1.4.1.2
-  cgrun   a box to start programs from
+  cghex    a binary editor, from GHex 1.2.1
+  cgcalc   a scientific and programmer's calculator, and a slide rule,
+           from GCalc of gnome-utils 1.4.1.2
+  cgrun    a box to start programs from
+  cgpaint  a classic paint program
 
 Each has a README of its own in its directory, with its copyright,
 what it does and who wrote it.
@@ -16,8 +17,9 @@ what it does and who wrote it.
 Building
 --------
 
-It needs CGTK 1.4, and autoconf 2.71, automake 1.16 and gettext 0.19.6
-or later to build from git. The git tree holds no generated files;
+It needs CGTK 1.4 and libpng 1.6 or later, which CGTK needs itself,
+and autoconf 2.71, automake 1.16 and gettext 0.19.6 or later to build
+from git. The git tree holds no generated files;
 make them first:
 
   autoreconf -vif
@@ -27,8 +29,10 @@ make them first:
   make install
 
 make check edits a file through cghex's document, with no window, and
-looks at what it then holds; and has cgrun read the .desktop files in
-tests/data, match names against them and start programs.
+looks at what it then holds; has cgrun read the .desktop files in
+tests/data, match names against them and start programs; and has
+cgpaint draw lines and shapes on a picture, and save one as each kind
+of file it knows and read it again.
 
 A release tarball comes with its configure script, and starts at
 ./configure.
@@ -37,9 +41,10 @@ Translations
 ------------
 
 Each program keeps its own catalogues and text domain, in cghex/po,
-cgcalc/po and cgrun/po, and installs them as cghex.mo, cgcalc.mo and
-cgrun.mo. The strings new in the tools, and all of cgrun's, were
-machine translated and have not been reviewed by native speakers.
+cgcalc/po, cgrun/po and cgpaint/po, and installs them as cghex.mo,
+cgcalc.mo and cgrun.mo. The strings new in the tools, and all of
+cgrun's, were machine translated and have not been reviewed by native
+speakers. cgpaint has no catalogues yet.
 
 History
 -------

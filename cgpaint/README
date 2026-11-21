@@ -1,0 +1,95 @@
+Copyright
+=========
+
+   cgpaint - a paint program
+   Copyright (C) 2026 The CGTK authors
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+   For more details see the file COPYING at the top of cgtools.
+
+
+What is cgpaint
+===============
+
+cgpaint is a paint program, as the Paint of Windows 98 was: a picture
+of so many points by so many, a box of sixteen tools at its left, a
+box of colours beneath it, and a line at the bottom that says what the
+tool is for and where the pointer is. It is written for CGTK and comes
+from nowhere else.
+
+The tools are Paint's, in Paint's order: the free-form and the
+rectangular selection, the eraser, fill, pick color, the magnifier,
+the pencil, the brush, the airbrush, text, the line, the curve, the
+rectangle, the polygon, the ellipse and the rounded rectangle. The box
+beneath them holds what the chosen one can be told: an eraser's size,
+a brush's shape, a line's width, whether a shape is its edge, its edge
+and its inside, or all of one colour, and whether what is selected is
+laid down with its background or without.
+
+The left button draws in the foreground's colour and the right one in
+the background's, and each takes its colour from the colour box in the
+same way. Twice on a colour of the box changes it.
+
+It reads and writes three kinds of file: Windows bitmaps (.bmp), XPM
+(.xpm) and PNG (.png). How a name ends says which is written, and a
+name that does not say is given .bmp. A bitmap is written with 24 bits
+to a point; those of 1, 4, 8, 24 and 32 bits are read, if they are not
+packed. Nothing in a picture is seen through: what a PNG or an XPM
+file lets through is white.
+
+What is copied goes to the clipboard as a PNG file, so it can be
+pasted into other programs, and a picture copied in another program
+can be pasted here.
+
+Undo goes back as far as fifty steps, where Paint went three; fewer
+for a very large picture, as the earlier pictures are kept whole, in
+128 megabytes at most, and three at the least.
+
+
+What it has not
+===============
+
+Paint's printing, Set As Wallpaper, View Bitmap and thumbnail are not
+here, nor its bitmaps of 2, 16 and 256 colours. What is selected has
+no handles to stretch it by: Image > Stretch and Skew does that, by
+numbers. Text is typed at its end only, and its font is chosen in View
+> Text Font and not in a bar of its own. The two items of the Image
+menu are "Flip and Rotate" and "Stretch and Skew", as a menu of the
+toolkit's cannot have a stroke in an item's name.
+
+It is not translated yet: it has its text domain and cgpaint/po, with
+no catalogues in it.
+
+
+Building
+========
+
+See the README at the top of cgtools. cgpaint needs libpng, 1.6 or
+later, which CGTK needs too; configure looks for it.
+
+
+Use
+===
+
+  cgpaint [FILE]
+
+  Shift             with a line, keeps it level, upright or at half a
+                    right angle; with a shape, makes it as wide as high
+  the other button  while one is down, undoes what that one was doing
+  Escape            the same; or ends the selection, laying it down
+  Delete            clears what is selected
+  Control with a selection dragged leaves a copy of it behind
+
+The man page, cgpaint(1), has the rest.

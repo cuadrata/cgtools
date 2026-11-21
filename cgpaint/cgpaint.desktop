@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=CGPaint
+GenericName=Paint
+Comment=Draw and edit pictures
+Exec=cgpaint %f
+Icon=cgpaint
+Terminal=false
+StartupWMClass=Cgpaint
+MimeType=image/bmp;image/x-xpixmap;image/png;
+Categories=GTK;Graphics;2DGraphics;RasterGraphics;

@@ -34,11 +34,14 @@ Makefile
 /cghex/cghex
 /cgcalc/cgcalc
 /cgrun/cgrun
+/cgpaint/cgpaint
 /tests/cghex-document
 /tests/cgrun-apps
+/tests/cgpaint-image
 /tests/*.log
 /tests/*.trs
 /test-suite.log
 /cghex-document.tmp
 /cgrun-apps.tmp
+/cgpaint-image.tmp*
 /cgtools-*.tar.*

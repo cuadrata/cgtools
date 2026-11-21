@@ -2,28 +2,28 @@
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = cghex/po cgcalc/po cgrun/po
+SUBDIRS = cghex/po cgcalc/po cgrun/po cgpaint/po
 
 AM_CPPFLAGS = \
         -DLOCALEDIR=\"$(localedir)\" \
         $(GTK_CFLAGS)
 
-bin_PROGRAMS = cghex/cghex cgcalc/cgcalc cgrun/cgrun
-man_MANS = cghex/cghex.1 cgcalc/cgcalc.1 cgrun/cgrun.1
+bin_PROGRAMS = cghex/cghex cgcalc/cgcalc cgrun/cgrun cgpaint/cgpaint
+man_MANS = cghex/cghex.1 cgcalc/cgcalc.1 cgrun/cgrun.1 cgpaint/cgpaint.1
 
 desktopdir = $(datadir)/applications
-dist_desktop_DATA = cghex/cghex.desktop cgcalc/cgcalc.desktop
+dist_desktop_DATA = cghex/cghex.desktop cgcalc/cgcalc.desktop cgpaint/cgpaint.desktop
 
 # The icons: each tool's one drawing, the sizes of it rendered beforehand
 # by render-icons.sh, and an XPM, which is in the tool too, for whatever
 # still looks in pixmaps.
-icontools = cghex cgcalc
+icontools = cghex cgcalc cgpaint
 iconsizes = 16 22 24 32 48 64 128 256
 hicolordir = $(datadir)/icons/hicolor
 scalabledir = $(hicolordir)/scalable/apps
-dist_scalable_DATA = cghex/icons/cghex.svg cgcalc/icons/cgcalc.svg
+dist_scalable_DATA = cghex/icons/cghex.svg cgcalc/icons/cgcalc.svg cgpaint/icons/cgpaint.svg
 pixmapsdir = $(datadir)/pixmaps
-dist_pixmaps_DATA = cghex/icons/cghex.xpm cgcalc/icons/cgcalc.xpm
+dist_pixmaps_DATA = cghex/icons/cghex.xpm cgcalc/icons/cgcalc.xpm cgpaint/icons/cgpaint.xpm
 
 install-data-local:
 	for t in $(icontools); do for s in $(iconsizes); do \
@@ -39,12 +39,14 @@ uninstall-local:
 
 EXTRA_DIST = $(man_MANS) history \
         cghex/README cgcalc/README \
-        cgrun/README \
+        cgrun/README cgpaint/README \
         render-icons.sh \
         cghex/icons/cghex-16.png cghex/icons/cghex-22.png cghex/icons/cghex-24.png cghex/icons/cghex-32.png \
         cghex/icons/cghex-48.png cghex/icons/cghex-64.png cghex/icons/cghex-128.png cghex/icons/cghex-256.png \
         cgcalc/icons/cgcalc-16.png cgcalc/icons/cgcalc-22.png cgcalc/icons/cgcalc-24.png cgcalc/icons/cgcalc-32.png \
-        cgcalc/icons/cgcalc-48.png cgcalc/icons/cgcalc-64.png cgcalc/icons/cgcalc-128.png cgcalc/icons/cgcalc-256.png
+        cgcalc/icons/cgcalc-48.png cgcalc/icons/cgcalc-64.png cgcalc/icons/cgcalc-128.png cgcalc/icons/cgcalc-256.png \
+        cgpaint/icons/cgpaint-16.png cgpaint/icons/cgpaint-22.png cgpaint/icons/cgpaint-24.png cgpaint/icons/cgpaint-32.png \
+        cgpaint/icons/cgpaint-48.png cgpaint/icons/cgpaint-64.png cgpaint/icons/cgpaint-128.png cgpaint/icons/cgpaint-256.png
 
 # cghex
 
@@ -130,3 +132,30 @@ EXTRA_DIST += \
         tests/data/system/applications/tryless.desktop \
         tests/data/user/applications/gone.desktop \
         tests/data/user/applications/mine.desktop
+
+# cgpaint
+
+cgpaint_cgpaint_SOURCES = \
+        cgpaint/cgpaint.c \
+        cgpaint/cgpaint.h \
+        cgpaint/file.c \
+        cgpaint/image.c \
+        cgpaint/pictures.h \
+        cgpaint/view.c
+cgpaint_cgpaint_CPPFLAGS = $(AM_CPPFLAGS) $(PNG_CFLAGS) -I$(top_srcdir)/cgpaint -DGETTEXT_PACKAGE=\"cgpaint\"
+cgpaint_cgpaint_LDADD = $(GTK_LIBS) $(PNG_LIBS) $(LIBINTL) $(MATH_LIBS)
+
+# What cgpaint draws and the files it keeps, without a window: make
+# check draws lines and shapes and looks at the points, and saves a
+# picture as each kind of file and reads it again.
+check_PROGRAMS += tests/cgpaint-image
+tests_cgpaint_image_SOURCES = \
+        tests/cgpaint-image.c \
+        cgpaint/cgpaint.h \
+        cgpaint/file.c \
+        cgpaint/image.c
+tests_cgpaint_image_CPPFLAGS = $(cgpaint_cgpaint_CPPFLAGS)
+tests_cgpaint_image_LDADD = $(cgpaint_cgpaint_LDADD)
+TESTS += tests/cgpaint-image
+CLEANFILES += cgpaint-image.tmp cgpaint-image.tmp.bmp cgpaint-image.tmp.xpm \
+        cgpaint-image.tmp.png "1 cgpaint-image.tmp.xpm"
