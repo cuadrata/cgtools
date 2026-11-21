@@ -76,8 +76,10 @@ numbers. Text is typed at its end only, and its font is chosen in View
 menu are "Flip and Rotate" and "Stretch and Skew", as a menu of the
 toolkit's cannot have a stroke in an item's name.
 
-It is not translated yet: it has its text domain and cgpaint/po, with
-no catalogues in it.
+It is in seven languages: German, Spanish, French, Japanese, Brazilian
+Portuguese, Russian and Simplified Chinese. The names of the tools and
+of the menus are those Paint had in each. The translations were made
+by machine and have not been reviewed by native speakers.
 
 
 Building

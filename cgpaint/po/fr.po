@@ -1,0 +1,527 @@
+# French translation of cgpaint.
+# Copyright (C) 2026 The CGTK authors
+# This file is distributed under the same license as the cgtools package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cgpaint 1.4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-21 12:00+0000\n"
+"PO-Revision-Date: 2026-11-21 12:00+0000\n"
+"Last-Translator: The CGTK authors\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: cgpaint/cgpaint.c:42
+msgid "Free-Form Select"
+msgstr "Sélection libre"
+
+#: cgpaint/cgpaint.c:42
+msgid "Selects a part of the picture of any shape, to move, copy or change."
+msgstr ""
+"Sélectionne une partie de l'image de forme quelconque, pour la déplacer, la "
+"copier ou la modifier."
+
+#: cgpaint/cgpaint.c:43
+msgid "Select"
+msgstr "Sélection"
+
+#: cgpaint/cgpaint.c:43
+msgid "Selects a rectangle of the picture, to move, copy or change."
+msgstr ""
+"Sélectionne un rectangle de l'image, pour le déplacer, le copier ou le "
+"modifier."
+
+#: cgpaint/cgpaint.c:44
+msgid "Eraser"
+msgstr "Gomme"
+
+#: cgpaint/cgpaint.c:44
+msgid ""
+"Rubs out with the background color; with the right button, only the "
+"foreground color."
+msgstr ""
+"Efface avec la couleur d'arrière-plan ; avec le bouton droit, seulement la "
+"couleur de premier plan."
+
+#: cgpaint/cgpaint.c:45
+msgid "Fill With Color"
+msgstr "Remplissage"
+
+#: cgpaint/cgpaint.c:45
+msgid "Fills an area of one color with another."
+msgstr "Remplit une zone d'une couleur avec une autre."
+
+#: cgpaint/cgpaint.c:46
+msgid "Pick Color"
+msgstr "Prélèvement d'une couleur"
+
+#: cgpaint/cgpaint.c:46
+msgid "Takes a color from the picture to draw with."
+msgstr "Prélève une couleur dans l'image pour dessiner avec."
+
+#: cgpaint/cgpaint.c:47
+msgid "Magnifier"
+msgstr "Loupe"
+
+#: cgpaint/cgpaint.c:47
+msgid "Shows the picture larger, or at its own size again."
+msgstr "Affiche l'image en plus grand, ou de nouveau à sa taille."
+
+#: cgpaint/cgpaint.c:48
+msgid "Pencil"
+msgstr "Crayon"
+
+#: cgpaint/cgpaint.c:48
+msgid "Draws a line one point wide where the pointer goes."
+msgstr "Trace une ligne d'un point de large là où passe le pointeur."
+
+#: cgpaint/cgpaint.c:49
+msgid "Brush"
+msgstr "Pinceau"
+
+#: cgpaint/cgpaint.c:49
+msgid "Draws with a brush of the shape and size chosen."
+msgstr "Dessine avec un pinceau de la forme et de la taille choisies."
+
+#: cgpaint/cgpaint.c:50
+msgid "Airbrush"
+msgstr "Aérographe"
+
+#: cgpaint/cgpaint.c:50
+msgid "Sprays color, as widely as chosen."
+msgstr "Pulvérise de la couleur, sur la largeur choisie."
+
+#: cgpaint/cgpaint.c:51
+msgid "Text"
+msgstr "Texte"
+
+#: cgpaint/cgpaint.c:51
+msgid "Types text into the picture."
+msgstr "Saisit du texte dans l'image."
+
+#: cgpaint/cgpaint.c:52
+msgid "Line"
+msgstr "Ligne"
+
+#: cgpaint/cgpaint.c:52
+msgid "Draws a straight line of the width chosen."
+msgstr "Trace une ligne droite de l'épaisseur choisie."
+
+#: cgpaint/cgpaint.c:53
+msgid "Curve"
+msgstr "Courbe"
+
+#: cgpaint/cgpaint.c:53
+msgid "Draws a line of the width chosen, and then bends it, once or twice."
+msgstr ""
+"Trace une ligne de l'épaisseur choisie, puis la courbe, une ou deux fois."
+
+#: cgpaint/cgpaint.c:54
+msgid "Rectangle"
+msgstr "Rectangle"
+
+#: cgpaint/cgpaint.c:54
+msgid "Draws a rectangle, filled as chosen."
+msgstr "Dessine un rectangle, rempli comme choisi."
+
+#: cgpaint/cgpaint.c:55
+msgid "Polygon"
+msgstr "Polygone"
+
+#: cgpaint/cgpaint.c:55
+msgid "Draws a shape of straight sides, filled as chosen."
+msgstr "Dessine une forme à côtés droits, remplie comme choisi."
+
+#: cgpaint/cgpaint.c:56
+msgid "Ellipse"
+msgstr "Ellipse"
+
+#: cgpaint/cgpaint.c:56
+msgid "Draws an ellipse, filled as chosen."
+msgstr "Dessine une ellipse, remplie comme choisi."
+
+#: cgpaint/cgpaint.c:57
+msgid "Rounded Rectangle"
+msgstr "Rectangle arrondi"
+
+#: cgpaint/cgpaint.c:57
+msgid "Draws a rectangle with round corners, filled as chosen."
+msgstr "Dessine un rectangle aux coins arrondis, rempli comme choisi."
+
+#: cgpaint/cgpaint.c:84 cgpaint/cgpaint.c:266
+msgid "untitled"
+msgstr "sans titre"
+
+#: cgpaint/cgpaint.c:85
+#, c-format
+msgid "%s - Paint"
+msgstr "%s - Paint"
+
+#: cgpaint/cgpaint.c:99 cgpaint/cgpaint.c:270
+msgid "Paint"
+msgstr "Paint"
+
+#: cgpaint/cgpaint.c:151
+msgid "Pictures (*.bmp *.xpm *.png)"
+msgstr "Images (*.bmp *.xpm *.png)"
+
+#: cgpaint/cgpaint.c:153
+msgid "All Files (*)"
+msgstr "Tous les fichiers (*)"
+
+#: cgpaint/cgpaint.c:157
+msgid "untitled.bmp"
+msgstr "sans titre.bmp"
+
+#: cgpaint/cgpaint.c:188 cgpaint/cgpaint.c:814
+#, c-format
+msgid ""
+"%s could not be opened.\n"
+"%s"
+msgstr ""
+"Impossible d'ouvrir %s.\n"
+"%s"
+
+#: cgpaint/cgpaint.c:221 cgpaint/cgpaint.c:231
+msgid "Save As"
+msgstr "Enregistrer sous"
+
+#: cgpaint/cgpaint.c:230
+#, c-format
+msgid ""
+"%s is there already.\n"
+"Replace it?"
+msgstr ""
+"%s existe déjà.\n"
+"Le remplacer ?"
+
+#: cgpaint/cgpaint.c:241 cgpaint/cgpaint.c:800
+#, c-format
+msgid ""
+"%s could not be saved.\n"
+"%s"
+msgstr ""
+"Impossible d'enregistrer %s.\n"
+"%s"
+
+#: cgpaint/cgpaint.c:268
+#, c-format
+msgid "Save changes to %s?"
+msgstr "Enregistrer les modifications de %s ?"
+
+#: cgpaint/cgpaint.c:271
+msgid "Yes"
+msgstr "Oui"
+
+#: cgpaint/cgpaint.c:272
+msgid "No"
+msgstr "Non"
+
+#: cgpaint/cgpaint.c:273 cgpaint/cgpaint.c:650
+msgid "Cancel"
+msgstr "Annuler"
+
+#: cgpaint/cgpaint.c:587
+msgid "Edit Colors"
+msgstr "Modifier les couleurs"
+
+#: cgpaint/cgpaint.c:649 cgpaint/cgpaint.c:972
+msgid "OK"
+msgstr "Valider"
+
+#: cgpaint/cgpaint.c:743
+msgid "Open"
+msgstr "Ouvrir"
+
+#: cgpaint/cgpaint.c:792
+msgid "Copy To"
+msgstr "Copier vers"
+
+#: cgpaint/cgpaint.c:809
+msgid "Paste From"
+msgstr "Coller à partir de"
+
+#: cgpaint/cgpaint.c:856
+msgid "Custom Zoom"
+msgstr "Zoom personnalisé"
+
+#: cgpaint/cgpaint.c:872
+msgid "Text Font"
+msgstr "Police du texte"
+
+#: cgpaint/cgpaint.c:895
+msgid "Flip horizontal"
+msgstr "Retourner horizontalement"
+
+#: cgpaint/cgpaint.c:895
+msgid "Flip vertical"
+msgstr "Retourner verticalement"
+
+#: cgpaint/cgpaint.c:895
+msgid "Rotate by 90 degrees"
+msgstr "Faire pivoter de 90 degrés"
+
+#: cgpaint/cgpaint.c:896
+msgid "Rotate by 180 degrees"
+msgstr "Faire pivoter de 180 degrés"
+
+#: cgpaint/cgpaint.c:896
+msgid "Rotate by 270 degrees"
+msgstr "Faire pivoter de 270 degrés"
+
+#: cgpaint/cgpaint.c:904
+msgid "Flip and Rotate"
+msgstr "Retourner et faire pivoter"
+
+#: cgpaint/cgpaint.c:915
+msgid "Stretch and Skew"
+msgstr "Étirer et incliner"
+
+#: cgpaint/cgpaint.c:916
+msgid "Stretch"
+msgstr "Étirer"
+
+#: cgpaint/cgpaint.c:917 cgpaint/cgpaint.c:920
+msgid "Horizontal:"
+msgstr "Horizontal :"
+
+#: cgpaint/cgpaint.c:918 cgpaint/cgpaint.c:921
+msgid "Vertical:"
+msgstr "Vertical :"
+
+#: cgpaint/cgpaint.c:919
+msgid "Skew"
+msgstr "Incliner"
+
+#: cgpaint/cgpaint.c:920 cgpaint/cgpaint.c:921
+msgid "degrees"
+msgstr "degrés"
+
+#: cgpaint/cgpaint.c:927
+msgid "The picture would be too large."
+msgstr "L'image serait trop grande."
+
+#: cgpaint/cgpaint.c:934
+msgid "Attributes"
+msgstr "Attributs"
+
+#: cgpaint/cgpaint.c:935
+msgid "Size"
+msgstr "Taille"
+
+#: cgpaint/cgpaint.c:936
+msgid "Width:"
+msgstr "Largeur :"
+
+#: cgpaint/cgpaint.c:936 cgpaint/cgpaint.c:937
+msgid "pixels"
+msgstr "pixels"
+
+#: cgpaint/cgpaint.c:937
+msgid "Height:"
+msgstr "Hauteur :"
+
+#: cgpaint/cgpaint.c:961
+msgid "About CGPaint"
+msgstr "À propos de CGPaint"
+
+#: cgpaint/cgpaint.c:969
+msgid "A paint program, as Paint was"
+msgstr "Un programme de dessin, comme l'était Paint"
+
+#: cgpaint/cgpaint.c:986
+msgid "_File"
+msgstr "_Fichier"
+
+#: cgpaint/cgpaint.c:987
+msgid "_New"
+msgstr "_Nouveau"
+
+#: cgpaint/cgpaint.c:988
+msgid "_Open..."
+msgstr "_Ouvrir..."
+
+#: cgpaint/cgpaint.c:989
+msgid "_Save"
+msgstr "_Enregistrer"
+
+#: cgpaint/cgpaint.c:990
+msgid "Save _As..."
+msgstr "Enregistrer _sous..."
+
+#: cgpaint/cgpaint.c:992
+msgid "E_xit"
+msgstr "_Quitter"
+
+#: cgpaint/cgpaint.c:993
+msgid "_Edit"
+msgstr "_Édition"
+
+#: cgpaint/cgpaint.c:994
+msgid "_Undo"
+msgstr "_Annuler"
+
+#: cgpaint/cgpaint.c:995
+msgid "_Repeat"
+msgstr "_Répéter"
+
+#: cgpaint/cgpaint.c:997
+msgid "Cu_t"
+msgstr "Co_uper"
+
+#: cgpaint/cgpaint.c:998
+msgid "_Copy"
+msgstr "_Copier"
+
+#: cgpaint/cgpaint.c:999
+msgid "_Paste"
+msgstr "C_oller"
+
+#: cgpaint/cgpaint.c:1000
+msgid "C_lear Selection"
+msgstr "_Effacer la sélection"
+
+#: cgpaint/cgpaint.c:1001
+msgid "Select _All"
+msgstr "_Tout sélectionner"
+
+#: cgpaint/cgpaint.c:1003
+msgid "C_opy To..."
+msgstr "Copier _vers..."
+
+#: cgpaint/cgpaint.c:1004
+msgid "Paste _From..."
+msgstr "Coller à _partir de..."
+
+#: cgpaint/cgpaint.c:1005
+msgid "_View"
+msgstr "_Affichage"
+
+#: cgpaint/cgpaint.c:1006
+msgid "_Tool Box"
+msgstr "_Boîte à outils"
+
+#: cgpaint/cgpaint.c:1007
+msgid "_Color Box"
+msgstr "_Palette de couleurs"
+
+#: cgpaint/cgpaint.c:1008
+msgid "_Status Bar"
+msgstr "Barre d'é_tat"
+
+#: cgpaint/cgpaint.c:1010
+msgid "_Zoom"
+msgstr "_Zoom"
+
+#: cgpaint/cgpaint.c:1011
+msgid "_Normal Size"
+msgstr "Taille _normale"
+
+#: cgpaint/cgpaint.c:1012
+msgid "_Large Size"
+msgstr "_Grande taille"
+
+#: cgpaint/cgpaint.c:1013
+msgid "C_ustom..."
+msgstr "_Personnaliser..."
+
+#: cgpaint/cgpaint.c:1015
+msgid "Show _Grid"
+msgstr "_Afficher la grille"
+
+#: cgpaint/cgpaint.c:1016
+msgid "Text _Font..."
+msgstr "Police du te_xte..."
+
+#: cgpaint/cgpaint.c:1017
+msgid "_Image"
+msgstr "_Image"
+
+#: cgpaint/cgpaint.c:1018
+msgid "_Flip and Rotate..."
+msgstr "_Retourner et faire pivoter..."
+
+#: cgpaint/cgpaint.c:1019
+msgid "_Stretch and Skew..."
+msgstr "É_tirer et incliner..."
+
+#: cgpaint/cgpaint.c:1020
+msgid "_Invert Colors"
+msgstr "_Inverser les couleurs"
+
+#: cgpaint/cgpaint.c:1021
+msgid "_Attributes..."
+msgstr "_Attributs..."
+
+#: cgpaint/cgpaint.c:1022
+msgid "_Clear Image"
+msgstr "_Effacer l'image"
+
+#: cgpaint/cgpaint.c:1023
+msgid "_Draw Opaque"
+msgstr "_Dessiner opaque"
+
+#: cgpaint/cgpaint.c:1024
+msgid "_Colors"
+msgstr "_Couleurs"
+
+#: cgpaint/cgpaint.c:1025
+msgid "_Edit Colors..."
+msgstr "_Modifier les couleurs..."
+
+#: cgpaint/cgpaint.c:1026
+msgid "_Help"
+msgstr "Ai_de"
+
+#: cgpaint/cgpaint.c:1027
+msgid "_About..."
+msgstr "_À propos..."
+
+#: cgpaint/cgpaint.c:1154
+#, c-format
+msgid "Usage: %s [OPTION...] [FILE]\n"
+msgstr "Utilisation : %s [OPTION...] [FICHIER]\n"
+
+#: cgpaint/cgpaint.c:1156
+#, c-format
+msgid "  --help       show this help and exit\n"
+msgstr "  --help       afficher cette aide et quitter\n"
+
+#: cgpaint/cgpaint.c:1157
+#, c-format
+msgid "  --version    show the version and exit\n"
+msgstr "  --version    afficher la version et quitter\n"
+
+#: cgpaint/cgpaint.c:1159
+#, c-format
+msgid "The usual GTK options, such as --display, are also understood.\n"
+msgstr ""
+"Les options habituelles de GTK, comme --display, sont aussi comprises.\n"
+
+#: cgpaint/file.c:56
+msgid "The picture is too large, or has no size."
+msgstr "L'image est trop grande, ou n'a pas de taille."
+
+#: cgpaint/file.c:113
+msgid "Only bitmaps of 1, 4, 8, 24 or 32 bits that are not packed are read."
+msgstr "Seuls les bitmaps de 1, 4, 8, 24 ou 32 bits non compressés sont lus."
+
+#: cgpaint/file.c:151
+msgid "The bitmap is damaged."
+msgstr "Le bitmap est endommagé."
+
+#: cgpaint/file.c:291
+msgid "The XPM file is damaged."
+msgstr "Le fichier XPM est endommagé."
+
+#: cgpaint/file.c:432
+msgid "This is not a bitmap, an XPM or a PNG file."
+msgstr "Ce n'est ni un bitmap, ni un fichier XPM ou PNG."
+
+#: cgpaint/file.c:490
+msgid "The picture could not be made into a PNG file."
+msgstr "Impossible de faire de l'image un fichier PNG."

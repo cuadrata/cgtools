@@ -89,8 +89,10 @@ did not look for it.
 Control+T, which keeps the window above the others, asks the desktop
 for that; under Wayland there is nothing to ask.
 
-It is not translated yet: it has its text domain and cgedit/po, with
-no catalogues in it.
+It is in seven languages, where Leafpad was in many more: German,
+Spanish, French, Japanese, Brazilian Portuguese, Russian and Simplified
+Chinese. The translations were made by machine and have not been
+reviewed by native speakers.
 
 
 Building

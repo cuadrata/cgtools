@@ -44,9 +44,11 @@ Translations
 
 Each program keeps its own catalogues and text domain, in cghex/po,
 cgcalc/po, cgrun/po, cgpaint/po and cgedit/po, and installs them as
-cghex.mo, cgcalc.mo and cgrun.mo. The strings new in the tools, and
-all of cgrun's, were machine translated and have not been reviewed by
-native speakers. cgpaint and cgedit have no catalogues yet.
+cghex.mo, cgcalc.mo, cgrun.mo, cgpaint.mo and cgedit.mo. The strings
+new in the tools, and all of cgrun's, cgpaint's and cgedit's, were
+machine translated and have not been reviewed by native speakers.
+cgpaint and cgedit are in seven languages so far: German, Spanish,
+French, Japanese, Brazilian Portuguese, Russian and Simplified Chinese.
 
 History
 -------
