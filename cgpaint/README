@@ -42,6 +42,13 @@ The left button draws in the foreground's colour and the right one in
 the background's, and each takes its colour from the colour box in the
 same way. Twice on a colour of the box changes it.
 
+The pointers that have a point to them are cgpaint's own and not the
+desktop's: the pencil draws at its tip, the bucket fills where its
+paint ends, the dropper takes the colour at its tip, the glass and
+the can work about their middles, and everything else draws at the
+gap in the middle of a cross. A cursor theme need not have a pencil,
+and where it has one, where it draws is the theme's to say.
+
 It reads and writes three kinds of file: Windows bitmaps (.bmp), XPM
 (.xpm) and PNG (.png). How a name ends says which is written, and a
 name that does not say is given .bmp. A bitmap is written with 24 bits

@@ -169,26 +169,187 @@ sized(void)
     gtk_widget_queue_draw(view);
 }
 
-static void
-pointer(GdkCursorType type)
+/*
+ * The pointers that have a point to them are this program's own, so
+ * that where they draw is where they point, whatever the desktop's
+ * pointers are: a theme need not have a pencil at all, and where it
+ * has one, where it draws is the theme's to say. Sixteen points by
+ * sixteen: # is black, a full stop is white and a space is nothing;
+ * before them, the point that is the pointer's place.
+ */
+static const struct {
+    gint x, y;
+    const gchar *rows[16];
+} pointers[] = {
+    {   /* the pencil, by its tip */
+        0, 15, {
+            "            ##  ",
+            "           #..# ",
+            "          #....#",
+            "         #.#..# ",
+            "        #...##  ",
+            "       #...#    ",
+            "      #...#     ",
+            "     #...#      ",
+            "    #...#       ",
+            "   #...#        ",
+            "  #...#         ",
+            " #...#          ",
+            " #..#           ",
+            "#.##            ",
+            "###             ",
+            "#               " }
+    },
+    {   /* the bucket, by the end of what it pours */
+        0, 15, {
+            "       ##       ",
+            "      #  #      ",
+            "      # ###     ",
+            "      ##...#    ",
+            "     ##.....#   ",
+            "    #.#......#  ",
+            "   #...#......# ",
+            "  #.........##  ",
+            " ##........#    ",
+            " ###......#     ",
+            " ####....#      ",
+            " ####...#       ",
+            " ### #.#        ",
+            " ##   #         ",
+            " #              ",
+            "#               " }
+    },
+    {   /* the dropper, by its tip */
+        0, 15, {
+            "           ###  ",
+            "          ##### ",
+            "        # ##### ",
+            "         ###### ",
+            "        #####   ",
+            "       #..###   ",
+            "      #...# #   ",
+            "     #...#      ",
+            "    #...#       ",
+            "   #...#        ",
+            "  #...#         ",
+            " #...#          ",
+            " #..#           ",
+            "#.##            ",
+            "##              ",
+            "#               " }
+    },
+    {   /* the glass, by the middle of it */
+        6, 6, {
+            "    #####       ",
+            "  ##.....##     ",
+            " #..     ..#    ",
+            " #.       .#    ",
+            "#.         .#   ",
+            "#.         .#   ",
+            "#.         .#   ",
+            "#.         .#   ",
+            "#.         .#   ",
+            " #.       .#    ",
+            " #..     ..##   ",
+            "  ##.....#####  ",
+            "    #####  #.## ",
+            "            #.##",
+            "             #.#",
+            "              ##" }
+    },
+    {   /* the can, by the middle of what it sprays */
+        3, 3, {
+            "  # #           ",
+            " # # #          ",
+            "# # # #  ###    ",
+            " # # # # #.#    ",
+            "# # # # ##.###  ",
+            " # # #  #....#  ",
+            "  # #   #....#  ",
+            "        #....#  ",
+            "        #.#..#  ",
+            "        #.#..#  ",
+            "        #.#..#  ",
+            "        #....#  ",
+            "        #....#  ",
+            "        #....#  ",
+            "        ######  ",
+            "                " }
+    },
+    {   /* a cross, by the gap at its middle, for all else that draws */
+        7, 7, {
+            "      ...       ",
+            "      .#.       ",
+            "      .#.       ",
+            "      .#.       ",
+            "      .#.       ",
+            "      ...       ",
+            "......   ...... ",
+            ".#####   #####. ",
+            "......   ...... ",
+            "      ...       ",
+            "      .#.       ",
+            "      .#.       ",
+            "      .#.       ",
+            "      .#.       ",
+            "      ...       ",
+            "                " }
+    }
+};
+
+enum { OWN_PENCIL = GDK_LAST_CURSOR, OWN_FILL, OWN_PICK, OWN_ZOOM, OWN_SPRAY, OWN_CROSS, POINTERS };
+
+/* One of them, made into a cursor: what is black, and what of it there is at all. */
+static GdkCursor *
+own_pointer(gint which)
 {
-    static GdkCursor *made[GDK_LAST_CURSOR];
+    static GdkColor black = { 0, 0, 0, 0 }, white = { 0, 0xffff, 0xffff, 0xffff };
+    gchar dark[32] = { 0 }, there[32] = { 0 };
+    GdkBitmap *source, *mask;
+    GdkCursor *cursor;
+    gint x, y;
+
+    for (y = 0; y < 16; y++)
+        for (x = 0; x < 16; x++) {
+            gchar c = pointers[which].rows[y][x];
+
+            if (c == '#')
+                dark[y * 2 + x / 8] |= 1 << (x & 7);
+            if (c != ' ')
+                there[y * 2 + x / 8] |= 1 << (x & 7);
+        }
+    source = gdk_bitmap_create_from_data(view->window, dark, 16, 16);
+    mask = gdk_bitmap_create_from_data(view->window, there, 16, 16);
+    cursor = gdk_cursor_new_from_pixmap(source, mask, &black, &white, pointers[which].x, pointers[which].y);
+    gdk_bitmap_unref(source);
+    gdk_bitmap_unref(mask);
+    return cursor;
+}
+
+/* The pointer is one of the desktop's, or one of these. */
+static void
+pointer(gint which)
+{
+    static GdkCursor *made[POINTERS];
     static gint now = -1;
 
-    if ((gint) type == now || !view->window)
+    if (which == now || !view->window)
         return;
-    if (!made[type])
-        made[type] = gdk_cursor_new(type);
-    gdk_window_set_cursor(view->window, made[type]);
-    now = type;
+    if (!made[which])
+        made[which] = which < GDK_LAST_CURSOR ? gdk_cursor_new(which) : own_pointer(which - GDK_LAST_CURSOR);
+    gdk_window_set_cursor(view->window, made[which]);
+    now = which;
 }
 
 static void
 tool_pointer(void)
 {
-    pointer(tool == TOOL_PENCIL || tool == TOOL_BRUSH ? GDK_PENCIL
-            : tool == TOOL_AIRBRUSH ? GDK_SPRAYCAN
-            : tool == TOOL_TEXT ? GDK_XTERM : GDK_CROSSHAIR);
+    pointer(tool == TOOL_PENCIL ? OWN_PENCIL
+            : tool == TOOL_FILL ? OWN_FILL
+            : tool == TOOL_PICK ? OWN_PICK
+            : tool == TOOL_ZOOM ? OWN_ZOOM
+            : tool == TOOL_AIRBRUSH ? OWN_SPRAY
+            : tool == TOOL_TEXT ? GDK_XTERM : OWN_CROSS);
 }
 
 static void
